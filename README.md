@@ -1,4 +1,4 @@
-![sucrOS logo and title](repo-res/sucros_title.png | width=700)
+![sucrOS logo and title](repo-res/sucros_title.png)
 
 ## Introduction
 SucrOS (/ˈsukɹoʊs/) is an operating system project I am making for fun. The goal
