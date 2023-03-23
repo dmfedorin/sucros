@@ -1,0 +1,7 @@
+/sucros.img
+/kernel/lib
+/kernel/kernel
+/sucros-root/boot/kernel
+/sucros-root/limine-cd.bin
+/sucros-root/limine-cd-efi.bin
+/sucros-root/limine.sys
