@@ -1,11 +1,11 @@
-#ifndef FRAMEBUF_H__
-#define FRAMEBUF_H__
+#ifndef GFX_FRAMEBUF_H__
+#define GFX_FRAMEBUF_H__
 
 #include <stdint.h>
 #include <stddef.h>
 
 struct framebuf_info {
-	void *addr;
+	uint8_t *addr;
 	uint64_t width, height;
 
 	struct {

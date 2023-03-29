@@ -2,8 +2,11 @@
 
 #include <limine.h>
 
+#include "kutil.h"
+
 #define MAX_FRAMEBUF_CNT 16
 #define QUAL_WEIGHT_RGB 10000
+#define QUAL_WEIGHT_DEPTH_24 5000
 #define QUAL_MUL_WIDTH 1
 #define QUAL_MUL_HEIGHT 1
 
@@ -35,8 +38,9 @@ void framebuf_init(void)
 	for (size_t i = 0; i < fb_cnt; ++i) {
 		struct limine_framebuffer *lmn_fb = fb_req.response->framebuffers[i];
 		fbs[i] = (struct framebuf_info){
+			.addr = lmn_fb->address,
 			.width = lmn_fb->width,
-			.height = lmn_fb->width,
+			.height = lmn_fb->height,
 			.minfo = {
 				.pitch = lmn_fb->pitch,
 				.depth = lmn_fb->bpp,
@@ -52,7 +56,7 @@ void framebuf_init(void)
 
 	// non-RGB framebuffers are not supported.
 	if (mmodel_of_framebuf(framebuf_get_best()) != LIMINE_FRAMEBUFFER_RGB)
-		for (;;);
+		hang();
 }
 
 struct framebuf_info const *framebuf_get_best(void)
@@ -66,6 +70,9 @@ struct framebuf_info const *framebuf_get_best(void)
 
 		if (lmn_fb->memory_model == LIMINE_FRAMEBUFFER_RGB)
 			score += QUAL_WEIGHT_RGB;
+
+		if (fbs[i].minfo.depth == 24)
+			score += QUAL_WEIGHT_DEPTH_24;
 
 		score += fbs[i].width * QUAL_MUL_WIDTH;
 		score += fbs[i].height * QUAL_MUL_HEIGHT;
