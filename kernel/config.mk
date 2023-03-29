@@ -13,6 +13,8 @@ K_CFLAGS := \
 	-pedantic \
 	-c \
 	-I$(K_INC_DIR) \
+	-I../deps/limine \
+	-I../deps/font8x8 \
 	-ffreestanding \
 	-fPIC \
 	-mno-red-zone
