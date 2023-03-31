@@ -19,6 +19,7 @@ struct gdraw_col {
 };
 
 void gdraw_init(void);
+struct framebuf_info const *gdraw_get_framebuf(void);
 void gdraw_set_framebuf(struct framebuf_info const *new_fb);
 void gdraw_clear(struct gdraw_col c);
 void gdraw_put_pixel(uint64_t x, uint64_t y, struct gdraw_col c);
@@ -26,5 +27,8 @@ void gdraw_put_rect(uint64_t x, uint64_t y, uint64_t w, uint64_t h,
                     uint64_t thickness, struct gdraw_col c);
 void gdraw_fill_rect(uint64_t x, uint64_t y, uint64_t w, uint64_t h,
                      struct gdraw_col c);
+void gdraw_get_font_info(unsigned *out_size_x, unsigned *out_size_y);
+void gdraw_put_ch(uint64_t x, uint64_t y, char ch, struct gdraw_col c);
+void gdraw_put_str(uint64_t x, uint64_t y, char const *s, struct gdraw_col c);
 
 #endif
