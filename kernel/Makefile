@@ -24,3 +24,8 @@ $(K_LIB_DIR)/%.c.o: $(K_SRC_DIR)/%.c
 	@ mkdir -p $@
 	@ rmdir $@
 	$(K_CC) $(K_CFLAGS) -o $@ $<
+
+$(K_LIB_DIR)/int/%.c.o: $(K_SRC_DIR)/int/%.c
+	@ mkdir -p $@
+	@ rmdir $@
+	$(K_CC) $(K_CFLAGS) -mgeneral-regs-only -o $@ $<
