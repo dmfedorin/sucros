@@ -16,6 +16,8 @@
 #define FONT_SIZE_X 8
 #define FONT_SIZE_Y 8
 
+#define TAB_WIDTH 4
+
 static struct framebuf_info const *fb;
 static mask64 mask_r, mask_g, mask_b, mask_all;
 
@@ -134,6 +136,9 @@ void gdraw_put_str(uint64_t x, uint64_t y, char const *s, struct gdraw_col c)
 			offset_y += FONT_SIZE_Y;
 		case '\r':
 			offset_x = 0;
+			break;
+		case '\t':
+			offset_x += FONT_SIZE_X * TAB_WIDTH;
 			break;
 		default:
 			gdraw_put_ch(x + offset_x, y + offset_y, s[i], c);
