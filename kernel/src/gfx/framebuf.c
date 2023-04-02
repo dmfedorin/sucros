@@ -4,18 +4,17 @@
 
 #include "kutil.h"
 
-#define MAX_FRAMEBUF_CNT 16
 #define QUAL_WEIGHT_RGB 10000
 #define QUAL_WEIGHT_DEPTH_24 5000
 #define QUAL_MUL_WIDTH 1
 #define QUAL_MUL_HEIGHT 1
 
-static volatile struct limine_framebuffer_request fb_req = {
+static struct limine_framebuffer_request volatile fb_req = {
 	.id = LIMINE_FRAMEBUFFER_REQUEST,
 	.revision = 0,
 };
 
-static struct framebuf_info fbs[MAX_FRAMEBUF_CNT];
+static struct framebuf_info fbs[16];
 static size_t fb_cnt;
 
 static uint8_t mmodel_of_framebuf(struct framebuf_info const *fb)

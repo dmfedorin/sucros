@@ -8,7 +8,7 @@ struct idtr {
 	uint64_t base;
 } __attribute__((packed));
 
-struct idt_entry {
+struct idt_ent {
 	uint16_t base_0;
 	uint16_t sel;
 	uint8_t ist;

@@ -2,6 +2,7 @@
 #include "gfx/gdraw.h"
 #include "sys/gdt.h"
 #include "sys/idt.h"
+#include "mm/mlayt.h"
 #include "kutil.h"
 
 void _start(void)
@@ -10,6 +11,7 @@ void _start(void)
 	gdraw_init();
 	gdt_init();
 	idt_init();
+	mlayt_init();
 
 	gdraw_put_str(0, 0, "hello world", GDRAW_WHITE);
 

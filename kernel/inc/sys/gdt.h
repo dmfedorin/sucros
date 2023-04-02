@@ -8,7 +8,7 @@ struct gdtr {
 	uint64_t base;
 } __attribute__((packed));
 
-struct gdt_entry {
+struct gdt_ent {
 	uint16_t lim_0;
 	uint16_t base_0;
 	uint8_t base_1;
@@ -39,7 +39,7 @@ enum gdt_flag {
 };
 
 struct gdt {
-	struct gdt_entry knull, kcode, kdata;
+	struct gdt_ent knull, kcode, kdata;
 } __attribute__((packed));
 
 enum gdt_sel {

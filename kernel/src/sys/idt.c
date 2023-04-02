@@ -5,11 +5,11 @@
 #include "int/exc.h"
 #include "sys/gdt.h"
 
-static struct idt_entry idt[256];
+static struct idt_ent idt[256];
 
 static void set_ent(size_t ind, uintptr_t handler, enum idt_gate_type type)
 {
-	idt[ind] = (struct idt_entry){
+	idt[ind] = (struct idt_ent){
 		.base_0 = handler & 0xffff,
 		.sel = GDT_SEL_KERNEL_CODE,
 		.ist = 0,
