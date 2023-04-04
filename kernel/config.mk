@@ -9,7 +9,7 @@ K_AS := x86_64-elf-as
 K_LD := x86_64-elf-gcc
 
 K_CFLAGS := \
-	-std=c17 \
+	-std=c99 \
 	-pedantic \
 	-c \
 	-I$(K_INC_DIR) \
